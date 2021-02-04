@@ -747,6 +747,68 @@ from `dateutil` is available for use in calculations like this:
 ${{ date(Date_Established__c) + relativedelta(months=child_index) }}
 ```
 
+### NULL
+
+The value `NULL` can be used to represent a missing value as in the recipe
+below:
+
+First, we can make `NULL` an option with `random_choice`:
+
+```yaml
+- object: foo
+  count: 10
+  fields:
+    EndDate:
+      random_choice:
+        - date_between:
+            start_date: 2018-01-01
+            end_date: 2021-12-12
+        - NULL
+```
+
+Then, in another field you can test whether the value is `NULL` or not:
+
+```yaml
+    DateSupplied:
+      if:
+        - choice:
+            when: ${{ EndDate!=NULL }}
+            pick: "Yes"
+        - choice:
+            pick: "No"
+```
+
+### NULL
+
+The value `NULL` can be used to represent a missing value as in the recipe
+below:
+
+First, we can make `NULL` an option with `random_choice`:
+
+```yaml
+- object: foo
+  count: 10
+  fields:
+    EndDate:
+      random_choice:
+        - date_between:
+            start_date: 2018-01-01
+            end_date: 2021-12-12
+        - NULL
+```
+
+Then, in another field you can test whether the value is `NULL` or not:
+
+```yaml
+    DateSupplied:
+      if:
+        - choice:
+            when: ${{ EndDate!=NULL }}
+            pick: "Yes"
+        - choice:
+            pick: "No"
+```
+
 ## Macros
 
 Macros allow you to re-use groups of fields instead of repeating them manually.

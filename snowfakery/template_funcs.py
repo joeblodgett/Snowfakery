@@ -298,3 +298,6 @@ class StandardFuncs(SnowfakeryPlugin):
 
     setattr(Functions, "if", Functions.if_)
     setattr(Functions, "relativedelta", relativedelta)
+    setattr(Functions, "NULL", None)
+    setattr(Functions, "null", None)
+    setattr(Functions, "Null", None)
